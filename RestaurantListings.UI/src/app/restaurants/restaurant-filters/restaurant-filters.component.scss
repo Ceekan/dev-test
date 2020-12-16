@@ -1,0 +1,28 @@
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 800;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.filter-group input[type=name] {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.search {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: .3s border-color;
+}
+
+.search:hover {
+    border: 1px solid #aaa;
+}

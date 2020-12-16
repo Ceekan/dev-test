@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="filters">
+    <app-restaurant-filters
+      [tags]="tags | async"
+      (filtersChange)="onFiltersChange($event)">
+    </app-restaurant-filters>
+  </div>
+
+  <div class="content">
+    <ng-container *ngIf="emptyResults; else restaurantList">
+      <div class="restaurant-list-empty">
+          No restaurants available
+      </div>
+    </ng-container>
+    <ng-template #restaurantList>
+      <article class="restaurant-list-vertical">
+        <ul>
+          <li *ngFor="let restaurant of restaurants; let i = index">
+            <div class="restaurant-photo">
+              <img [src]="restaurant.photoUri" class="photo-img" />
+            </div>
+        
+            <div class="restaurant-details">
+              <div class="restaurant-compare">
+                <div>
+                    <span class="restaurant-compare-stars">
+                        <fa-icon [icon]="faStarIcon"></fa-icon>
+                    </span>
+                </div>
+                <span>{{ restaurant.rating }}</span>
+              </div>
+    
+              <h2>{{ restaurant.name }}</h2>
+    
+              <div class="restaurant-home-rating">
+                <div>
+                    <span class="restaurant-home">
+                        <fa-icon [icon]="faHomeIcon"></fa-icon>
+                    </span>
+                </div>
+                <span>{{ restaurant.address }}</span>          
+              </div>
+    
+              <div class="restaurant-phone-rating">
+                <div>
+                    <span class="restaurant-phone">
+                        <fa-icon [icon]="faPhoneIcon"></fa-icon>
+                    </span>
+                </div>
+                <span>{{ restaurant.phoneNumber }}</span>          
+              </div>
+        
+              <p class="restaurant-description">
+                {{ restaurant.description }}
+              </p>
+
+              <button routerLink="item/{{restaurant.id}}">
+                <fa-icon [icon]="faThumbsUpIcon"></fa-icon> 
+                Rate Us
+              </button>
+            </div>
+          </li>
+        </ul>
+      </article>  
+    </ng-template>
+  </div>
+</div>
+

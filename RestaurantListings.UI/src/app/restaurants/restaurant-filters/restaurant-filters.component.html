@@ -1,0 +1,28 @@
+<ng-container [formGroup]="form">
+  <div class="filter-group">
+    <input type="name" class="search" placeholder="Search" formControlName="search" />
+  </div>
+
+  <div class="filter-group">
+    <div class="label">Tags</div>
+
+    <div class="filter-item" *ngFor="let tag of tags; let i = index">
+      <input type="checkbox" [value]="tag" (change)="onTagChecked($event)" />
+      {{ tag }}
+    </div>
+  </div>
+
+  <div class="filter-group">
+    <div class="label">Other</div>
+
+    <div class="filter-item">
+      <input type="checkbox" formControlName="familyFriendly" />
+      Family friendly
+    </div>
+
+    <div class="filter-item">
+      <input type="checkbox" formControlName="vegan" />
+      Vegan
+    </div>
+  </div>
+</ng-container>
